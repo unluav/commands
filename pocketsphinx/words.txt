@@ -1,5 +1,7 @@
 
-teriyaki /.0001/
-forward /.0001/
-come to me /.0001/
-go look at box number four /.0001/
+teriyaki /.001/
+forward /.001/
+come to me /.001/
+go look at box number four /.001/
+go look at box number three /.001/
+heal me /.001/
