@@ -4,7 +4,10 @@ from sphinxbase.sphinxbase import *
 import pyaudio
 
 modeldir = "/usr/local/lib/python2.7/dist-packages/pocketsphinx/model"
-datadir = "/usr/local/lib/python2.7/dist-packages/pocketsphinx/test/data"
+if os.name == 'nt':
+	modeldir = "C:/Python27/Lib/site-packages/pocketsphinx/model"
+	
+#datadir = "/usr/local/lib/python2.7/dist-packages/pocketsphinx/test/data"
 
 #create keyword file
 #words = '''
@@ -19,7 +22,10 @@ config.set_string('-hmm', os.path.join(modeldir, 'en-us'))
 config.set_string('-dict', os.path.join(modeldir, 'cmudict-en-us.dict'))
 config.set_string('-kws', 'words.txt')
 config.set_float('-kws_threshold', 1e+20)
-config.set_string('-logfn', '/dev/null')
+if os.name == 'nt':
+	config.set_string('-logfn', 'NUL')
+else:
+	config.set_string('-logfn', '/dev/null')
 
 p = pyaudio.PyAudio()
 stream = p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=1024)
